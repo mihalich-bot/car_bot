@@ -22,7 +22,9 @@ use Mix.Config
 #
 
 config :telegram_bot, bot_name: "ex_mihalich_bot"
-config :nadia, token: "414409682:AAE74I7l2DiL-fx5PgPKfx5P13NX3wx51aE"
+
+#config :nadia, token: "some-token-in-here"
+
 # It is also possible to import configuration files, relative to this
 # directory. For example, you can emulate configuration per environment
 # by uncommenting the line below and defining dev.exs, test.exs and such.
@@ -30,3 +32,4 @@ config :nadia, token: "414409682:AAE74I7l2DiL-fx5PgPKfx5P13NX3wx51aE"
 # here (which is why it is important to import them last).
 #
 #     import_config "#{Mix.env}.exs"
+import_config "config_secret.exs"
