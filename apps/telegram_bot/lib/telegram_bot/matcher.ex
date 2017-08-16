@@ -1,6 +1,6 @@
 defmodule TelegramBot.Matcher do
   use GenServer
-  alias TelegramBot.Commander
+  alias TelegramBot.Handler
   alias Nadia.Model.{Message, Voice}
 
   def start_link do
@@ -13,14 +13,14 @@ defmodule TelegramBot.Matcher do
 
 
   def handle_cast({:message, %Message{voice: %Voice{}} = message}, state) do
-    Commander.Voice.handle(message)
+    Handler.Voice.handle(message)
     {:noreply, state}
   end
 
   def handle_cast({:message, %Message{text: text} = message}, state) when is_binary(text) do
-    Commander.Text.handle(message)
+    Handler.Text.handle(message)
     {:noreply, state}
-  end 
+  end
 
   def handle_cast({:message, message}, state) do
     IO.inspect message

@@ -1,8 +1,8 @@
-defmodule TelegramBot.Commander.Text do 
+defmodule TelegramBot.Handler.Text do
   use GenServer
   alias Nadia.Model.Message
-
-  @ping_regex ~r/ping|пинг/iu
+  alias Commander.Model.Command
+  alias TelegramBot.Replier
 
   def start_link do
     GenServer.start_link(__MODULE__, [], name: __MODULE__)
@@ -16,12 +16,8 @@ defmodule TelegramBot.Commander.Text do
 
   def handle(_), do: :ok
 
-  def handle_cast({text, %Message{chat: %{id: chat_id}}}, state) do
-    case Regex.match?(@ping_regex, text) do
-      true -> Nadia.send_message(chat_id, "Pong !")
-      false -> IO.inspect text
-    end
-    
+  def handle_cast({text, message}, state) do
+    IO.inspect text
     {:noreply, state}
   end
 

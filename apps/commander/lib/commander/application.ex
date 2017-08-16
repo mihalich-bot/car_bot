@@ -1,4 +1,4 @@
-defmodule TelegramBot.Application do
+defmodule Commander.Application do
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
   @moduledoc false
@@ -7,20 +7,16 @@ defmodule TelegramBot.Application do
 
   def start(_type, _args) do
     import Supervisor.Spec, warn: false
-
     # List all child processes to be supervised
     children = [
-      worker(TelegramBot.Poller, []),
-      worker(TelegramBot.Matcher, []),
-      worker(TelegramBot.Replier, []),
-      worker(TelegramBot.Handler.Supervisor, [])
-      # Starts a worker by calling: TelegramBot.Worker.start_link(arg)
-      # {TelegramBot.Worker, arg},
+      worker(Commander, [])
+      # Starts a worker by calling: Commander.Worker.start_link(arg)
+      # {Commander.Worker, arg},
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: TelegramBot.Supervisor]
+    opts = [strategy: :one_for_one, name: Commander.Supervisor]
     Supervisor.start_link(children, opts)
   end
 end
