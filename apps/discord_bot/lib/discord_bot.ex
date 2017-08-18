@@ -3,16 +3,9 @@ defmodule DiscordBot do
   Documentation for DiscordBot.
   """
 
-  @doc """
-  Hello world.
+  use GenServer
 
-  ## Examples
-
-      iex> DiscordBot.hello
-      :world
-
-  """
-  def hello do
-    :world
+  def start_link(_) do
+    GenServer.start_link(__MODULE__, [], name: __MODULE__)
   end
 end

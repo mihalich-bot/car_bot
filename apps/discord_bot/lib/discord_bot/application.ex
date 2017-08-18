@@ -9,7 +9,7 @@ defmodule DiscordBot.Application do
     # List all child processes to be supervised
     children = [
       # Starts a worker by calling: DiscordBot.Worker.start_link(arg)
-      # {DiscordBot.Worker, arg},
+      {DiscordBot, []},
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
