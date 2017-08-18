@@ -1,9 +1,9 @@
-defmodule TelegramBot.Mixfile do
+defmodule NlpProcessor.Mixfile do
   use Mix.Project
 
   def project do
     [
-      app: :telegram_bot,
+      app: :nlp_processor,
       version: "0.1.0",
       build_path: "../../_build",
       config_path: "../../config/config.exs",
@@ -18,17 +18,15 @@ defmodule TelegramBot.Mixfile do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:logger, :nadia, :nlp_processor],
-      mod: {TelegramBot.Application, []}
+      extra_applications: [:logger, :httpotion],
+      mod: {NlpProcessor.Application, []}
     ]
   end
 
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:nlp_processor, in_umbrella: true},
-      {:commander, in_umbrella: true},
-      {:nadia, "~> 0.4.2"}
+      {:elixir_apiai, "~> 0.1.0", path: "../../../../opensource/elixir_apiai"}
       # {:dep_from_hexpm, "~> 0.3.0"},
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"},
       # {:sibling_app_in_umbrella, in_umbrella: true},
