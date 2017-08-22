@@ -9,6 +9,19 @@ use Mix.Config
 # to add files to the root filesystem or modify the firmware
 # archive.
 
+config :fw, interface: :wlan0
+
+# ntpd binary to use
+config :nerves_ntp, :ntpd, "/usr/sbin/ntpd"
+
+# servers to sync time from
+config :nerves_ntp, :servers, [
+    "0.pool.ntp.org",
+    "1.pool.ntp.org",
+    "2.pool.ntp.org",
+    "3.pool.ntp.org"
+  ]
+  
 # config :nerves, :firmware,
 #   rootfs_additions: "config/rootfs_additions",
 #   fwup_conf: "config/fwup.conf"
@@ -17,7 +30,7 @@ use Mix.Config
 # of this file so it overrides the configuration defined above.
 # Uncomment to use target specific configurations
 
-# import_config "#{Mix.Project.config[:target]}.exs"
+import_config "config_secret.exs"
 
 config :bootloader,
   init: [:nerves_runtime, :nerves_network],

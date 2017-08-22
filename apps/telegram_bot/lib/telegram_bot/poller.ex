@@ -6,8 +6,8 @@ defmodule TelegramBot.Poller do
     GenServer.start_link(__MODULE__, :ok, name: __MODULE__)
   end
 
-  def init(_) do  
-    
+  def init(_) do
+
     update()
     {:ok, 0}
   end
@@ -42,15 +42,19 @@ defmodule TelegramBot.Poller do
     end)
     |> List.last
   end
-  defp process_messages({:error, %Nadia.Model.Error{reason: reason}}) do
-    Logger.log :error, reason
+  # defp process_messages({:error, %Nadia.Model.Error{reason: reason}}) do
+  #   Logger.log :error, reason
+  #
+  #   -1
+  # end
+  defp process_messages({:error, error}) do
+    IO.inspect error
 
     -1
   end
-  defp process_messages({:error, error}) do
-    Logger.log :error, error
 
-    -1
+  defp process_messages(data) do
+    IO.inspect data
   end
 
   defp process_message(nil), do: IO.puts "nil"
