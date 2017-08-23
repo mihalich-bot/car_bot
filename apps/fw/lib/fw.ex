@@ -36,6 +36,7 @@ defmodule Fw do
 
   def handle_cast(:start_bot, state) do
     {:ok, _} = Application.ensure_all_started(:nerves_ntp)
+    {:ok, ntp_pid} = Nerves.Ntp.Worker.start_link()
     {:ok, _} = Application.ensure_all_started(:telegram_bot)
     {:noreply, state}
   end
