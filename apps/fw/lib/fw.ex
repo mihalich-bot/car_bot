@@ -34,6 +34,12 @@ defmodule Fw do
     :inet_res.gethostbyname(hostname)
   end
 
+  def handle_cast(:start_bot, state) do
+    {:ok, _} = Application.ensure_all_started(:nerves_ntp)
+    {:ok, _} = Application.ensure_all_started(:telegram_bot)
+    {:noreply, state}
+  end
+
   ## GenServer callbacks
 
   def init(interface) do
@@ -50,6 +56,9 @@ defmodule Fw do
     end
 
     connected = match?({:ok, {:hostent, 'nerves-project.org', [], :inet, 4, _}}, test_dns())
+    if connected do
+      GenServer.cast(__MODULE__, :start_bot)
+    end
     {:noreply, %{state | ip_address: ip, connected: connected || false}}
   end
 

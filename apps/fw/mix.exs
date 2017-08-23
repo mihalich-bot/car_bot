@@ -35,11 +35,11 @@ defmodule Fw.Mixfile do
   # applications which could cause the host to fail. Because of this, we only
   # invoke Fw.start/2 when running on a target.
   def application("host") do
-    [extra_applications: [:logger, :telegram_bot]]
+    [extra_applications: [:logger]]
   end
   def application(_target) do
     [mod: {Fw, []},
-     extra_applications: [:logger, :nerves_ntp, :telegram_bot]]
+     extra_applications: [:logger]]
   end
 
   # Dependencies can be Hex packages:

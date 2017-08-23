@@ -4,7 +4,7 @@
 ##  The cookie needs to be configured prior to vm boot for
 ##  for read only filesystem.
 
-# -name fw@0.0.0.0
+-name fw@car_bot
 -setcookie pAGglWkGbMWfCD2NcxFCIx+duXO/fpZAtGGviK1nuJC1+MfY3wRakQQW6eeWZtQz
 
 ## Use Ctrl-C to interrupt the current shell rather than invoking the emulator's
