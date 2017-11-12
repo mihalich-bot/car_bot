@@ -1,6 +1,8 @@
 defmodule TelegramBot.Handler.Supervisor do
   use Supervisor
 
+  def init(stack), do: {:ok, stack}
+
   def start_link do
     import Supervisor.Spec
 

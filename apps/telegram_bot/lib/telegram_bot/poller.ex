@@ -7,7 +7,6 @@ defmodule TelegramBot.Poller do
   end
 
   def init(_) do
-
     update()
     {:ok, 0}
   end
@@ -49,7 +48,6 @@ defmodule TelegramBot.Poller do
   # end
   defp process_messages({:error, error}) do
     IO.inspect error
-
     -1
   end
 

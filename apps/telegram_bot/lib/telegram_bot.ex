@@ -1,18 +1,4 @@
 defmodule TelegramBot do
-  @moduledoc """
-  Documentation for TelegramBot.
-  """
+  @moduledoc false
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> TelegramBot.hello
-      :world
-
-  """
-  def hello do
-    :world
-  end
 end
